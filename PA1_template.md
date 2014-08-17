@@ -26,7 +26,9 @@ ddply(Activity, .(date),  c("totalSteps", "SampleNumber"))
 forPlot<-ddply(Activity, .(date),  c("totalSteps", "SampleNumber"))
 
 library(ggplot2)
+```
 
+```{r fig.width = 7, fig.height = 5}
 ggplot(forPlot, aes(x=totalSteps, stat = "bin"))+ theme_bw()+geom_histogram(fill = "light blue", colour = "black")+xlab("") +ggtitle("Histogram of the Total Steps per Day")+theme(plot.title = element_text(size = rel(1.5), face = "bold"))+theme(axis.text.x = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.text.y = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.title = element_text(size = rel(1.2)))
 ```
 
@@ -47,7 +49,9 @@ SampleNumber<-function(data.frame){nrow(data.frame)}
 
 #apply functions to dataset, group by time interval (also assign to new data variable)
 forPlot2<-ddply(Activity, .(interval), c("aveSteps", "SampleNumber"))
+```
 
+```{r fig.width = 7, fig.height = 5}
 ggplot(forPlot2, aes(x=interval, y = aveSteps))+ theme_bw()+geom_line (colour = "black")+xlab("Time")+ylab("Average Steps Taken") +scale_x_continuous(breaks = seq(from = 0, to=2400, by = 200))+ggtitle("Average Daily Steps taken in Each Five-Minute Interval")+theme(plot.title = element_text(size = rel(1.5), face = "bold"))+theme(axis.text.x = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.text.y = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.title = element_text(size = rel(1.2)))
 ```
 
@@ -100,7 +104,9 @@ totalSteps2<-function(data.frame){sum(data.frame$steps)}
 SampleNumber<-function(data.frame){nrow(data.frame)}
 
 forPlot3<-ddply(A2, .(date),  c("totalSteps2", "SampleNumber"))
+```
 
+```{r fig.width = 7, fig.height = 5}
 ggplot(forPlot3, aes(x=totalSteps2, stat = "bin"))+ theme_bw()+geom_histogram(fill = "light blue", colour = "black")+xlab("") +ggtitle("Histogram of the Total Steps per Day \n(NA's replaced by mean steps per time interval)")+theme(plot.title = element_text(size = rel(1.5), face = "bold"))+theme(axis.text.x = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.text.y = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.title = element_text(size = rel(1.2)))
 
 
@@ -149,7 +155,9 @@ SampleNumber<-function(data.frame){nrow(data.frame)}
 forPlot4<-ddply(A2, .(interval, weekday), c("aveSteps2", "SampleNumber"))
 
 head(forPlot4)
+```
 
+```{r fig.width = 7, fig.height = 5}
 ggplot(forPlot4, aes(x=interval, y = aveSteps2))+ theme_bw()+geom_line (colour = "black")+facet_wrap(~weekday, ncol = 1)+xlab("Time")+ylab("Average Steps Taken") +scale_x_continuous(breaks = seq(from = 0, to=2400, by = 200))+ggtitle("Average Daily Steps taken in Each Five-Minute Interval:\nComparison of Weekdays and Weekends")+theme(plot.title = element_text(size = rel(1.5), face = "bold"))+theme(axis.text.x = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.text.y = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.title = element_text(size = rel(1.2)))
 ```
 
