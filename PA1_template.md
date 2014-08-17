@@ -28,7 +28,7 @@ forPlot<-ddply(Activity, .(date),  c("totalSteps", "SampleNumber"))
 library(ggplot2)
 ```
 
-```{r fig.width = 7, fig.height = 5}
+```{r fig.width = 7, fig.height = 5, fig.path='figures/'}
 ggplot(forPlot, aes(x=totalSteps, stat = "bin"))+ theme_bw()+geom_histogram(fill = "light blue", colour = "black")+xlab("") +ggtitle("Histogram of the Total Steps per Day")+theme(plot.title = element_text(size = rel(1.5), face = "bold"))+theme(axis.text.x = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.text.y = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.title = element_text(size = rel(1.2)))
 ```
 
