@@ -28,7 +28,8 @@ forPlot<-ddply(Activity, .(date),  c("totalSteps", "SampleNumber"))
 library(ggplot2)
 ```
 
-```{r fig.width = 7, fig.height = 5, fig.path='figures/'}
+```{r Figure 1, fig.width = 7, fig.height = 5, fig.path='figures/'}
+#This histogram can be found in the figures folder, name = Figure 1.png
 ggplot(forPlot, aes(x=totalSteps, stat = "bin"))+ theme_bw()+geom_histogram(fill = "light blue", colour = "black")+xlab("") +ggtitle("Histogram of the Total Steps per Day")+theme(plot.title = element_text(size = rel(1.5), face = "bold"))+theme(axis.text.x = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.text.y = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.title = element_text(size = rel(1.2)))
 ```
 
@@ -51,7 +52,8 @@ SampleNumber<-function(data.frame){nrow(data.frame)}
 forPlot2<-ddply(Activity, .(interval), c("aveSteps", "SampleNumber"))
 ```
 
-```{r fig.width = 7, fig.height = 5}
+```{r Figure 2, fig.width = 7, fig.height = 5, fig.path='figures/'}
+#This line graph can be found in the figures folder, name = Figure 2.png
 ggplot(forPlot2, aes(x=interval, y = aveSteps))+ theme_bw()+geom_line (colour = "black")+xlab("Time")+ylab("Average Steps Taken") +scale_x_continuous(breaks = seq(from = 0, to=2400, by = 200))+ggtitle("Average Daily Steps taken in Each Five-Minute Interval")+theme(plot.title = element_text(size = rel(1.5), face = "bold"))+theme(axis.text.x = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.text.y = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.title = element_text(size = rel(1.2)))
 ```
 
@@ -106,7 +108,8 @@ SampleNumber<-function(data.frame){nrow(data.frame)}
 forPlot3<-ddply(A2, .(date),  c("totalSteps2", "SampleNumber"))
 ```
 
-```{r fig.width = 7, fig.height = 5}
+```{r Figure 3, fig.width = 7, fig.height = 5, fig.path='figures/'}
+#This histogram can be found in the figures folder, name = Figure 3.png
 ggplot(forPlot3, aes(x=totalSteps2, stat = "bin"))+ theme_bw()+geom_histogram(fill = "light blue", colour = "black")+xlab("") +ggtitle("Histogram of the Total Steps per Day \n(NA's replaced by mean steps per time interval)")+theme(plot.title = element_text(size = rel(1.5), face = "bold"))+theme(axis.text.x = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.text.y = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.title = element_text(size = rel(1.2)))
 
 
@@ -157,7 +160,8 @@ forPlot4<-ddply(A2, .(interval, weekday), c("aveSteps2", "SampleNumber"))
 head(forPlot4)
 ```
 
-```{r fig.width = 7, fig.height = 5}
+```{r Figure 4, fig.width = 7, fig.height = 5, fig.path='figures/'}
+#This panel plot can be found in the figures folder, name = Figure 4.png
 ggplot(forPlot4, aes(x=interval, y = aveSteps2))+ theme_bw()+geom_line (colour = "black")+facet_wrap(~weekday, ncol = 1)+xlab("Time")+ylab("Average Steps Taken") +scale_x_continuous(breaks = seq(from = 0, to=2400, by = 200))+ggtitle("Average Daily Steps taken in Each Five-Minute Interval:\nComparison of Weekdays and Weekends")+theme(plot.title = element_text(size = rel(1.5), face = "bold"))+theme(axis.text.x = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.text.y = element_text(size = rel(1.2), face = "bold.italic"))+theme(axis.title = element_text(size = rel(1.2)))
 ```
 
